@@ -6,7 +6,7 @@ let brasileiro: boolean;
 let enderecos: Array<string>;
 
 primeiro = "will";
-sobrenome = "smith";
+sobrenome = "dos Santos";
 idade = 43;
 brasileiro = false;
 nomeCompleto = `${primeiro} ${sobrenome}`;
