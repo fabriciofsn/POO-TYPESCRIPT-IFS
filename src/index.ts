@@ -1,49 +1,15 @@
-class Pessoa {
-  private nome: string;
-  private sobrenome: string;
-  private idade: number;
-  private brasileiro: boolean;
-  private endereco: Array<string>;
-
-  constructor(
-    nome: string,
-    sobrenome: string,
-    idade: number,
-    brasileiro: boolean,
-    endereco: Array<string>
-  ) {
-    this.nome = nome;
-    this.sobrenome = sobrenome;
-    this.idade = idade;
-    this.brasileiro = brasileiro;
-    this.endereco = endereco;
-  }
-
-  public nomeCompleto(): string {
-    return `Nome completo: ${this.nome} ${this.sobrenome}`;
-  }
-
-  public recuperarEndereco(posicao: number): string {
-    return `Endereço: ${this.endereco[posicao]}`;
-  }
-
-  public nacionalidade(): string {
-    let br: string = "Brasileiro";
-    if (this.brasileiro) {
-      return `${br}? Sim`;
-    } else {
-      return `${br}? Não`;
-    }
-  }
-
-  public getIdade(): string {
-    return `Idade: ${this.idade}`;
-  }
-}
+import { Pessoa } from "./Pessoa";
+import { Filme } from "./Filme";
 
 const pessoa: Pessoa = new Pessoa("Caça", "Rato", 25, true, ["Rua A", "Rua B"]);
+const filme: Filme = new Filme("Buster Scruggs", 2018, 18);
 
 console.log(pessoa.nomeCompleto());
 console.log(pessoa.nacionalidade());
 console.log(pessoa.getIdade());
 console.log(pessoa.recuperarEndereco(1));
+
+console.log("---------------------------------------------");
+
+console.log(filme.verificaLancamento(2019));
+console.log(filme.verificaFaixaEtaria(19));

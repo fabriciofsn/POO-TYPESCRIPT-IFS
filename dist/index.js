@@ -1,33 +1,13 @@
 "use strict";
-class Pessoa {
-    constructor(nome, sobrenome, idade, brasileiro, endereco) {
-        this.nome = nome;
-        this.sobrenome = sobrenome;
-        this.idade = idade;
-        this.brasileiro = brasileiro;
-        this.endereco = endereco;
-    }
-    nomeCompleto() {
-        return `Nome completo: ${this.nome} ${this.sobrenome}`;
-    }
-    recuperarEndereco(posicao) {
-        return `Endereço: ${this.endereco[posicao]}`;
-    }
-    nacionalidade() {
-        let br = "Brasileiro";
-        if (this.brasileiro) {
-            return `${br}? Sim`;
-        }
-        else {
-            return `${br}? Não`;
-        }
-    }
-    getIdade() {
-        return `Idade: ${this.idade}`;
-    }
-}
-const pessoa = new Pessoa("Caça", "Rato", 25, true, ["Rua A", "Rua B"]);
+Object.defineProperty(exports, "__esModule", { value: true });
+const Pessoa_1 = require("./Pessoa");
+const Filme_1 = require("./Filme");
+const pessoa = new Pessoa_1.Pessoa("Caça", "Rato", 25, true, ["Rua A", "Rua B"]);
+const filme = new Filme_1.Filme("Buster Scruggs", 2018, 18);
 console.log(pessoa.nomeCompleto());
 console.log(pessoa.nacionalidade());
 console.log(pessoa.getIdade());
 console.log(pessoa.recuperarEndereco(1));
+console.log("---------------------------------------------");
+console.log(filme.verificaLancamento(2019));
+console.log(filme.verificaFaixaEtaria(19));
