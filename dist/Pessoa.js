@@ -8,6 +8,7 @@ class Pessoa {
         this.idade = idade;
         this.brasileiro = brasileiro;
         this.endereco = endereco;
+        Pessoa.qntPessoas++;
     }
     nomeCompleto() {
         return `Nome completo: ${this.nome} ${this.sobrenome}`;
@@ -27,5 +28,9 @@ class Pessoa {
     getIdade() {
         return `Idade: ${this.idade}`;
     }
+    static recuperarQntPessoas() {
+        return this.qntPessoas;
+    }
 }
 exports.Pessoa = Pessoa;
+Pessoa.qntPessoas = 0;

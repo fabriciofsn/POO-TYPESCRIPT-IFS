@@ -4,6 +4,7 @@ export class Pessoa {
   private idade: number;
   private brasileiro: boolean;
   private endereco: Array<string>;
+  static qntPessoas: number = 0;
 
   constructor(
     nome: string,
@@ -17,6 +18,7 @@ export class Pessoa {
     this.idade = idade;
     this.brasileiro = brasileiro;
     this.endereco = endereco;
+    Pessoa.qntPessoas++;
   }
 
   nomeCompleto(): string {
@@ -38,5 +40,9 @@ export class Pessoa {
 
   getIdade(): string {
     return `Idade: ${this.idade}`;
+  }
+
+  static recuperarQntPessoas(): number {
+    return this.qntPessoas;
   }
 }
