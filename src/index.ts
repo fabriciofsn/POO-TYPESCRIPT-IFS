@@ -1,6 +1,6 @@
 // import { Pessoa } from "./Pessoa";
 // import { Filme } from "./Filme";
-import { Aluno } from "./Aluno";
+import { Aluno, SituacaoAluno } from "./Aluno";
 import { Professor } from "./Professor";
 
 // const pessoa: Pessoa = new Pessoa("Caça", "Rato", 25, true, ["Rua A", "Rua B"]);
@@ -18,23 +18,25 @@ import { Professor } from "./Professor";
 // console.log(busterScruggs.verificaFaixaEtaria(19));
 
 // console.log("---------------------------------------------");
+console.log("Dados aluno");
 
-const aluno: Aluno = new Aluno(
+const Jubiscleiton: Aluno = new Aluno(
   "Jubiscleiton",
   23,
   "Hindu",
   "informatica",
-  true
+  SituacaoAluno.ATIVO
 );
 
-console.log(aluno.recInfoAluno());
-console.log("---------------------------------------------");
+console.log(Jubiscleiton.recInfoAluno());
+
+console.log("Dados Professor:");
 
 const professor: Professor = new Professor(
   "Sam",
   25,
   "Masculino",
   "08576846595",
-  "Rua 1 ao lado rua 2"
+  ["Rua 1 ao lado rua 2"]
 );
 console.log(professor.recInfoProfessor());

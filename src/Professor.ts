@@ -3,14 +3,14 @@ export class Professor {
   private idade: number;
   private sexo: string;
   private cpf: string;
-  private endereco: string;
+  private endereco: string[];
 
   constructor(
     nome: string,
     idade: number,
     sexo: string,
     cpf: string,
-    endereco: string
+    endereco: string[]
   ) {
     this.nome = nome;
     this.idade = idade;
@@ -21,7 +21,7 @@ export class Professor {
 
   gerarSiape(): string {
     let ano = new Date().getFullYear();
-    let matricula = `${ano}${(Math.random() * 20000).toFixed(0)}`;
+    let matricula = `${ano}${(Math.random() * 200000).toFixed(0)}`;
     return matricula;
   }
 

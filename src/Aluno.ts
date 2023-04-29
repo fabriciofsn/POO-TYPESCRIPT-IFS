@@ -3,7 +3,7 @@ export class Aluno {
   private idade: number;
   private curso: string;
   private matricula: string = "";
-  private estaMatricula: boolean;
+  private situacao: SituacaoAluno;
   private naturalidade: string;
 
   constructor(
@@ -11,29 +11,25 @@ export class Aluno {
     idade: number,
     naturalidade: string,
     curso: string,
-    estaMatricula: boolean
+    situacao: SituacaoAluno
   ) {
     this.nome = nome;
     this.idade = idade;
     this.naturalidade = naturalidade;
     this.curso = curso;
-    this.estaMatricula = estaMatricula;
+    this.situacao = situacao;
     this.gerarMatricula();
   }
 
   private gerarMatricula(): string {
     let ano = new Date().getFullYear();
-    let matriculaAluno = (Math.random() * 20000).toFixed(0);
+    let matriculaAluno = (Math.random() * 200000).toFixed(0);
 
     return (this.matricula = `Matrícula do aluno: ${ano}${matriculaAluno}`);
   }
 
   alunoMatriculado(): string {
-    if (this.estaMatricula) {
-      return `Sim`;
-    } else {
-      return `Não`;
-    }
+    return this.situacao;
   }
 
   recNumMatricula(): string {
@@ -46,8 +42,17 @@ export class Aluno {
     idade: ${this.idade},
     naturalidade: ${this.naturalidade},
     curso: ${this.curso},
-    Está matriculado: ${this.alunoMatriculado()},
+    Situação da matrícula: ${this.alunoMatriculado()},
     ${this.recNumMatricula()}
     `;
   }
+}
+
+export enum SituacaoAluno {
+  ATIVO = "Ativo",
+  MATRICULADO = "Matriculado",
+  TRANCADO = "Trancado",
+  CONCLUIDO = "Concluído",
+  CANCELADO = "Cancelado",
+  FORMANDO = "Formando",
 }
