@@ -1,4 +1,4 @@
-export class Pessoa {
+export abstract class Pessoa {
   private nome: string;
   private sobrenome: string;
   private idade: number;
@@ -21,6 +21,13 @@ export class Pessoa {
     Pessoa.qntPessoas++;
   }
 
+  gerarMatricula(): string {
+    let ano = new Date().getFullYear();
+    let matriculaAluno = (Math.random() * 200000).toFixed(0);
+
+    return `Matrícula: ${ano}${matriculaAluno}`;
+  }
+
   nomeCompleto(): string {
     return `Nome completo: ${this.nome} ${this.sobrenome}`;
   }
@@ -30,12 +37,10 @@ export class Pessoa {
   }
 
   nacionalidade(): string {
-    let br: string = "Brasileiro";
     if (this.brasileiro) {
-      return `${br}? Sim`;
-    } else {
-      return `${br}? Não`;
+      return `É brasileiro`;
     }
+    return `Não é brasileiro`;
   }
 
   getIdade(): string {

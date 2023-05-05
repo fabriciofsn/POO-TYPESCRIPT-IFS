@@ -1,50 +1,37 @@
-export class Aluno {
-  private nome: string;
-  private idade: number;
+import { Pessoa } from "./Pessoa";
+
+export class Aluno extends Pessoa {
+  private situacaoAluno: SituacaoAluno;
   private curso: string;
-  private matricula: string = "";
-  private situacao: SituacaoAluno;
-  private naturalidade: string;
 
   constructor(
     nome: string,
+    sobrenome: string,
     idade: number,
-    naturalidade: string,
+    brasileiro: boolean,
     curso: string,
-    situacao: SituacaoAluno
+    endereco: Array<string>,
+    situacaoAluno: SituacaoAluno
   ) {
-    this.nome = nome;
-    this.idade = idade;
-    this.naturalidade = naturalidade;
+    super(nome, sobrenome, idade, brasileiro, endereco);
+    this.situacaoAluno = situacaoAluno;
     this.curso = curso;
-    this.situacao = situacao;
-    this.gerarMatricula();
   }
 
-  private gerarMatricula(): string {
-    let ano = new Date().getFullYear();
-    let matriculaAluno = (Math.random() * 200000).toFixed(0);
-
-    return (this.matricula = `Matrícula do aluno: ${ano}${matriculaAluno}`);
-  }
-
-  alunoMatriculado(): string {
-    return this.situacao;
-  }
-
-  recNumMatricula(): string {
-    return `${this.gerarMatricula()}`;
+  private alunoMatriculado(): string {
+    return this.situacaoAluno;
   }
 
   recInfoAluno(): string {
     return `
-    Aluno: ${this.nome},
-    idade: ${this.idade},
-    naturalidade: ${this.naturalidade},
-    curso: ${this.curso},
-    Situação da matrícula: ${this.alunoMatriculado()},
-    ${this.recNumMatricula()}
-    `;
+    ${this.nomeCompleto()},
+     ${this.getIdade()},
+     naturalidade: ${this.nacionalidade()},
+     curso: ${this.curso},
+     Situação da matrícula: ${this.alunoMatriculado()},
+     ${this.gerarMatricula()}
+     ${this.recuperarEndereco(1)}
+     `;
   }
 }
 

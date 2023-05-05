@@ -10,6 +10,11 @@ class Pessoa {
         this.endereco = endereco;
         Pessoa.qntPessoas++;
     }
+    gerarMatricula() {
+        let ano = new Date().getFullYear();
+        let matriculaAluno = (Math.random() * 200000).toFixed(0);
+        return `Matrícula: ${ano}${matriculaAluno}`;
+    }
     nomeCompleto() {
         return `Nome completo: ${this.nome} ${this.sobrenome}`;
     }
@@ -17,13 +22,10 @@ class Pessoa {
         return `Endereço: ${this.endereco[posicao]}`;
     }
     nacionalidade() {
-        let br = "Brasileiro";
         if (this.brasileiro) {
-            return `${br}? Sim`;
+            return `É brasileiro`;
         }
-        else {
-            return `${br}? Não`;
-        }
+        return `Não é brasileiro`;
     }
     getIdade() {
         return `Idade: ${this.idade}`;

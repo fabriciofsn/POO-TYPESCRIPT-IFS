@@ -3,28 +3,15 @@
 import { Aluno, SituacaoAluno } from "./Aluno";
 import { Professor } from "./Professor";
 
-// const pessoa: Pessoa = new Pessoa("Caça", "Rato", 25, true, ["Rua A", "Rua B"]);
-// const busterScruggs: Filme = new Filme("Buster Scruggs", 2018, 18);
-
-// console.log(pessoa.nomeCompleto());
-// console.log(pessoa.nacionalidade());
-// console.log(pessoa.getIdade());
-// console.log(pessoa.recuperarEndereco(1));
-// console.log(Pessoa.recuperarQntPessoas());
-
-// console.log("---------------------------------------------");
-
-// console.log(busterScruggs.verificaLancamento(2019));
-// console.log(busterScruggs.verificaFaixaEtaria(19));
-
-// console.log("---------------------------------------------");
 console.log("Dados aluno");
 
 const Jubiscleiton: Aluno = new Aluno(
   "Jubiscleiton",
+  "Silva",
   23,
-  "Hindu",
-  "informatica",
+  true,
+  "informática",
+  ["Rua A", "Rua B"],
   SituacaoAluno.ATIVO
 );
 
@@ -34,9 +21,10 @@ console.log("Dados Professor:");
 
 const professor: Professor = new Professor(
   "Sam",
+  "Davis",
   25,
-  "Masculino",
-  "08576846595",
-  ["Rua 1 ao lado rua 2"]
+  true,
+  ["Rua A", "Rua C"],
+  25000
 );
 console.log(professor.recInfoProfessor());

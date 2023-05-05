@@ -1,38 +1,26 @@
-export class Professor {
-  private nome: string;
-  private idade: number;
-  private sexo: string;
-  private cpf: string;
-  private endereco: string[];
+import { Pessoa } from "./Pessoa";
+
+export class Professor extends Pessoa {
+  private salario: number;
 
   constructor(
     nome: string,
+    sobrenome: string,
     idade: number,
-    sexo: string,
-    cpf: string,
-    endereco: string[]
+    brasileiro: boolean,
+    endereco: string[],
+    salario: number
   ) {
-    this.nome = nome;
-    this.idade = idade;
-    this.sexo = sexo;
-    this.cpf = cpf;
-    this.endereco = endereco;
-  }
-
-  gerarSiape(): string {
-    let ano = new Date().getFullYear();
-    let matricula = `${ano}${(Math.random() * 200000).toFixed(0)}`;
-    return matricula;
+    super(nome, sobrenome, idade, brasileiro, endereco);
+    this.salario = salario;
   }
 
   recInfoProfessor(): string {
     return `
-      Nome do professor: ${this.nome},
-      Idade: ${this.idade},
-      Sexo: ${this.sexo},
-      CPF: ${this.cpf},
-      endereço: ${this.endereco},
-      Matrícula: ${this.gerarSiape()}
+    ${this.nomeCompleto()}
+    ${this.recuperarEndereco(0)}
+    ${this.gerarMatricula()}
+    Salário: R$${this.salario}
     `;
   }
 }
