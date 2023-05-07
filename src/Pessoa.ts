@@ -1,9 +1,11 @@
+import { Endereco } from "./Endereco";
+
 export abstract class Pessoa {
   private nome: string;
   private sobrenome: string;
   private idade: number;
   private brasileiro: boolean;
-  private endereco: Array<string>;
+  private endereco: Array<Endereco>;
   static qntPessoas: number = 0;
 
   constructor(
@@ -11,7 +13,7 @@ export abstract class Pessoa {
     sobrenome: string,
     idade: number,
     brasileiro: boolean,
-    endereco: Array<string>
+    endereco: Array<Endereco>
   ) {
     this.nome = nome;
     this.sobrenome = sobrenome;
@@ -21,26 +23,23 @@ export abstract class Pessoa {
     Pessoa.qntPessoas++;
   }
 
-  gerarMatricula(): string {
-    let ano = new Date().getFullYear();
-    let matriculaAluno = (Math.random() * 200000).toFixed(0);
-
-    return `Matrícula: ${ano}${matriculaAluno}`;
-  }
+  abstract gerarMatricula(): number;
 
   nomeCompleto(): string {
     return `Nome completo: ${this.nome} ${this.sobrenome}`;
   }
 
-  recuperarEndereco(posicao: number): string {
-    return `Endereço: ${this.endereco[posicao]}`;
+  recuperarEndereco(): string[] {
+    return this.endereco.map(
+      (en) => `Cep:${en.cep}; Número da casa: ${en.nCasa};
+      Cidade: ${en.cidade}; Bairro: ${en.bairro}; Rua: ${en.rua}
+      `
+    );
   }
 
   nacionalidade(): string {
-    if (this.brasileiro) {
-      return `É brasileiro`;
-    }
-    return `Não é brasileiro`;
+    if (this.brasileiro) return `Brasileiro`;
+    return `Estrangeiro`;
   }
 
   getIdade(): string {

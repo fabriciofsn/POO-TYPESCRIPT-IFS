@@ -7,19 +7,32 @@ class Aluno extends Pessoa_1.Pessoa {
         super(nome, sobrenome, idade, brasileiro, endereco);
         this.situacaoAluno = situacaoAluno;
         this.curso = curso;
+        this.matricula = this.gerarMatricula();
     }
     alunoMatriculado() {
         return this.situacaoAluno;
     }
+    gerarMatricula() {
+        let ano = new Date().getFullYear();
+        let matricula = Math.floor(Math.random() * (9999 - 1000 + 1) + 1000);
+        return Number(`${ano}${matricula}`);
+    }
+    submeterProjetoPesquisa() {
+        console.log("Isso é uma submissão de Projeto");
+    }
+    submeterProjetoExtensao() {
+        console.log("Isso é uma submissão de extensão");
+    }
     recInfoAluno() {
         return `
     ${this.nomeCompleto()},
-     ${this.getIdade()},
-     naturalidade: ${this.nacionalidade()},
-     curso: ${this.curso},
-     Situação da matrícula: ${this.alunoMatriculado()},
-     ${this.gerarMatricula()}
-     ${this.recuperarEndereco(1)}
+    ${this.getIdade()},
+    naturalidade: ${this.nacionalidade()},
+    curso: ${this.curso},
+    Endereço: ${this.recuperarEndereco()}
+    Situação da matrícula: ${this.alunoMatriculado()},
+    ${this.matricula}
+  
      `;
     }
 }
