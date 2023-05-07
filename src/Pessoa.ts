@@ -30,13 +30,11 @@ export abstract class Pessoa {
   }
 
   recuperarEndereco(): string[] {
-    return this.endereco.map(
-      (
-        en: Endereco
-      ) => `Cep:${en.cep}; Estado: ${en.estado}; Número da casa: ${en.nCasa};
-    Rua: ${en.rua}; Bairro: ${en.bairro}; Cidade: ${en.cidade};
-      `
-    );
+    return this.endereco.map(({ cep, estado, nCasa, rua, bairro, cidade }) => {
+      return `Cep: ${cep}; Estado: ${estado}; Número da casa: ${nCasa};
+    Rua: ${rua}; Bairro: ${bairro}; Cidade: ${cidade};
+      `;
+    });
   }
 
   nacionalidade(): string {

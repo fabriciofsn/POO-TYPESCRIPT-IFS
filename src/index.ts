@@ -1,5 +1,3 @@
-// import { Pessoa } from "./Pessoa";
-// import { Filme } from "./Filme";
 import { Aluno, SituacaoAluno } from "./Aluno";
 import { Professor } from "./Professor";
 import { Endereco } from "./Endereco";

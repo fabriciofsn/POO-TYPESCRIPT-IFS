@@ -1,7 +1,5 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-// import { Pessoa } from "./Pessoa";
-// import { Filme } from "./Filme";
 const Aluno_1 = require("./Aluno");
 const Professor_1 = require("./Professor");
 const Endereco_1 = require("./Endereco");
