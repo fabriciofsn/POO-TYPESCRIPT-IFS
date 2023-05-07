@@ -6,8 +6,9 @@ import { Endereco } from "./Endereco";
 
 console.log("Dados aluno");
 
-const enderecoAluno = new Endereco(
+const enderecoAluno: Endereco = new Endereco(
   "49300-000",
+  "Sergipe",
   "100",
   "Hesnan Do pão doce",
   "Centro",
@@ -26,8 +27,9 @@ const Jubiscleiton: Aluno = new Aluno(
 console.log(Jubiscleiton.recInfoAluno());
 
 console.log("Dados Professor:");
-const enderecoProfessor = new Endereco(
+const enderecoProfessor: Endereco = new Endereco(
   "49000-001",
+  "Sergipe",
   "200",
   "Louva-a-Deus do ping-pong",
   "Centro",

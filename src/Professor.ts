@@ -9,7 +9,7 @@ export class Professor extends Pessoa implements Projeto {
     sobrenome: string,
     idade: number,
     brasileiro: boolean,
-    endereco: Endereco[],
+    endereco: Array<Endereco>,
     salario: number
   ) {
     super(nome, sobrenome, idade, brasileiro, endereco);
@@ -31,10 +31,9 @@ export class Professor extends Pessoa implements Projeto {
     return `
     ${this.nomeCompleto()}
     ${this.getIdade()}
-    ${this.nacionalidade()}
-    ${this.recuperarEndereco()}
-    ${this.matricula}
-    
+    Nacionalidade: ${this.nacionalidade()}
+    Endereço: ${this.recuperarEndereco()}
+    Matrícula: ${this.matricula}
     Salário: R$${this.salario}
     `;
   }

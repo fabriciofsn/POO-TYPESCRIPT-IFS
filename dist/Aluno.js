@@ -31,9 +31,8 @@ class Aluno extends Pessoa_1.Pessoa {
     curso: ${this.curso},
     Endereço: ${this.recuperarEndereco()}
     Situação da matrícula: ${this.alunoMatriculado()},
-    ${this.matricula}
-  
-     `;
+    Matrícula: ${this.matricula}
+    `;
     }
 }
 exports.Aluno = Aluno;

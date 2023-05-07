@@ -14,14 +14,12 @@ class Pessoa {
         return `Nome completo: ${this.nome} ${this.sobrenome}`;
     }
     recuperarEndereco() {
-        return this.endereco.map((en) => `Cep:${en.cep}; Número da casa: ${en.nCasa};
-      Cidade: ${en.cidade}; Bairro: ${en.bairro}; Rua: ${en.rua}
+        return this.endereco.map((en) => `Cep:${en.cep}; Estado: ${en.estado}; Número da casa: ${en.nCasa};
+    Rua: ${en.rua}; Bairro: ${en.bairro}; Cidade: ${en.cidade};
       `);
     }
     nacionalidade() {
-        if (this.brasileiro)
-            return `Brasileiro`;
-        return `Estrangeiro`;
+        return this.brasileiro ? `Brasileiro` : `Estrangeiro`;
     }
     getIdade() {
         return `Idade: ${this.idade}`;

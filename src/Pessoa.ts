@@ -31,15 +31,16 @@ export abstract class Pessoa {
 
   recuperarEndereco(): string[] {
     return this.endereco.map(
-      (en) => `Cep:${en.cep}; Número da casa: ${en.nCasa};
-      Cidade: ${en.cidade}; Bairro: ${en.bairro}; Rua: ${en.rua}
+      (
+        en: Endereco
+      ) => `Cep:${en.cep}; Estado: ${en.estado}; Número da casa: ${en.nCasa};
+    Rua: ${en.rua}; Bairro: ${en.bairro}; Cidade: ${en.cidade};
       `
     );
   }
 
   nacionalidade(): string {
-    if (this.brasileiro) return `Brasileiro`;
-    return `Estrangeiro`;
+    return this.brasileiro ? `Brasileiro` : `Estrangeiro`;
   }
 
   getIdade(): string {

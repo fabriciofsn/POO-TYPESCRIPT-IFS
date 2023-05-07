@@ -49,9 +49,8 @@ export class Aluno extends Pessoa implements Projeto {
     curso: ${this.curso},
     Endereço: ${this.recuperarEndereco()}
     Situação da matrícula: ${this.alunoMatriculado()},
-    ${this.matricula}
-  
-     `;
+    Matrícula: ${this.matricula}
+    `;
   }
 }
 

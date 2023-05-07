@@ -21,10 +21,9 @@ class Professor extends Pessoa_1.Pessoa {
         return `
     ${this.nomeCompleto()}
     ${this.getIdade()}
-    ${this.nacionalidade()}
-    ${this.recuperarEndereco()}
-    ${this.matricula}
-    
+    Nacionalidade: ${this.nacionalidade()}
+    Endereço: ${this.recuperarEndereco()}
+    Matrícula: ${this.matricula}
     Salário: R$${this.salario}
     `;
     }

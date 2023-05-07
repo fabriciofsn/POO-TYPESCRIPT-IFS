@@ -2,8 +2,9 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Endereco = void 0;
 class Endereco {
-    constructor(cep, nCasa, rua, bairro, cidade) {
+    constructor(cep, estado, nCasa, rua, bairro, cidade) {
         this.cep = cep;
+        this.estado = estado;
         this.nCasa = nCasa;
         this.rua = rua;
         this.bairro = bairro;
