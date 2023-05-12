@@ -10,7 +10,7 @@ const enderecoAluno: Endereco = new Endereco(
   "100",
   "Hesnan Do pão doce",
   "Centro",
-  "Tobias barreto"
+  "Tobias Barreto"
 );
 const Jubiscleiton: Aluno = new Aluno(
   "Jubiscleiton",

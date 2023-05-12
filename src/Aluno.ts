@@ -2,8 +2,8 @@ import { Endereco } from "./Endereco";
 import { Pessoa } from "./Pessoa";
 
 export class Aluno extends Pessoa implements Projeto {
-  private situacaoAluno: SituacaoAluno;
-  private curso: string;
+  private _situacaoMatricula: SituacaoAluno = SituacaoAluno.ATIVO;
+  private _curso: string = "";
   private matricula: number;
 
   constructor(
@@ -13,16 +13,12 @@ export class Aluno extends Pessoa implements Projeto {
     brasileiro: boolean,
     curso: string,
     endereco: Array<Endereco>,
-    situacaoAluno: SituacaoAluno
+    situacaoMatricula: SituacaoAluno
   ) {
     super(nome, sobrenome, idade, brasileiro, endereco);
-    this.situacaoAluno = situacaoAluno;
+    this._situacaoMatricula = situacaoMatricula;
     this.curso = curso;
     this.matricula = this.gerarMatricula();
-  }
-
-  private alunoMatriculado(): string {
-    return this.situacaoAluno;
   }
 
   gerarMatricula(): number {
@@ -41,14 +37,30 @@ export class Aluno extends Pessoa implements Projeto {
     console.log("Isso é uma submissão de extensão");
   }
 
+  //GETTER E SETTER CURSO
+  public set curso(curso: string) {
+    this._curso = curso;
+  }
+  public get curso() {
+    return this._curso;
+  }
+
+  //GETTER E SETTER SITUAÇÃO MATRICULA
+  public set situacaoMatricula(situacao: SituacaoAluno) {
+    this._situacaoMatricula = situacao;
+  }
+  public get situacaoMatricula() {
+    return this._situacaoMatricula;
+  }
+
   recInfoAluno(): string {
     return `
-    ${this.nomeCompleto()},
-    ${this.getIdade()},
-    naturalidade: ${this.nacionalidade()},
+    ${this.nomeCompleto},
+    idade: ${this.idade},
+    naturalidade: ${this.getNacionalidade()},
     curso: ${this.curso},
-    Endereço: ${this.recuperarEndereco()}
-    Situação da matrícula: ${this.alunoMatriculado()},
+    Endereço: ${this.endereco}
+    Situação da matrícula: ${this.situacaoMatricula},
     Matrícula: ${this.matricula}
     `;
   }
@@ -60,5 +72,5 @@ export enum SituacaoAluno {
   TRANCADO = "Trancado",
   CONCLUIDO = "Concluído",
   CANCELADO = "Cancelado",
-  FORMANDO = "Formando",
+  FORMANDO = "Formado",
 }

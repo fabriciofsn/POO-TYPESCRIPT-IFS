@@ -2,7 +2,7 @@ import { Endereco } from "./Endereco";
 import { Pessoa } from "./Pessoa";
 
 export class Professor extends Pessoa implements Projeto {
-  private salario: number;
+  private _salario: number = 0;
   private matricula: number;
   constructor(
     nome: string,
@@ -27,12 +27,20 @@ export class Professor extends Pessoa implements Projeto {
     return Math.floor(Math.random() * (99999999 - 10000000 + 1) + 10000000);
   }
 
+  // GETTER E SETTER SALARIO
+  public set salario(salario: number) {
+    this._salario = salario;
+  }
+  public get salario() {
+    return this._salario;
+  }
+
   recInfoProfessor(): string {
     return `
-    ${this.nomeCompleto()}
-    ${this.getIdade()}
-    Nacionalidade: ${this.nacionalidade()}
-    Endereço: ${this.recuperarEndereco()}
+    ${this.nomeCompleto}
+    idade: ${this.idade}
+    Nacionalidade: ${this.getNacionalidade()}
+    Endereço: ${this.endereco}
     Matrícula: ${this.matricula}
     Salário: R$${this.salario}
     `;

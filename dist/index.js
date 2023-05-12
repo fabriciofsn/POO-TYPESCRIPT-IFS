@@ -4,7 +4,7 @@ const Aluno_1 = require("./Aluno");
 const Professor_1 = require("./Professor");
 const Endereco_1 = require("./Endereco");
 console.log("Dados aluno");
-const enderecoAluno = new Endereco_1.Endereco("49300-000", "Sergipe", "100", "Hesnan Do pão doce", "Centro", "Tobias barreto");
+const enderecoAluno = new Endereco_1.Endereco("49300-000", "Sergipe", "100", "Hesnan Do pão doce", "Centro", "Tobias Barreto");
 const Jubiscleiton = new Aluno_1.Aluno("Jubiscleiton", "Silva", 23, true, "informática", [enderecoAluno], Aluno_1.SituacaoAluno.ATIVO);
 console.log(Jubiscleiton.recInfoAluno());
 console.log("Dados Professor:");

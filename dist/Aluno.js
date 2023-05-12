@@ -43,5 +43,5 @@ var SituacaoAluno;
     SituacaoAluno["TRANCADO"] = "Trancado";
     SituacaoAluno["CONCLUIDO"] = "Conclu\u00EDdo";
     SituacaoAluno["CANCELADO"] = "Cancelado";
-    SituacaoAluno["FORMANDO"] = "Formando";
+    SituacaoAluno["FORMANDO"] = "Formado";
 })(SituacaoAluno = exports.SituacaoAluno || (exports.SituacaoAluno = {}));
