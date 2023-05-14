@@ -4,6 +4,7 @@ export abstract class Pessoa {
   private _nome: string = "";
   private _sobrenome: string = "";
   private _idade: number = 0;
+  private _CPF: string = "";
   private _nacionalidade: boolean = true;
   private _enderecos: Array<Endereco> = [];
   static qntPessoas: number = 0;
@@ -12,34 +13,27 @@ export abstract class Pessoa {
     nome: string,
     sobrenome: string,
     idade: number,
+    CPF: string,
     nacionalidade: boolean,
-    endereco: Array<Endereco>
+    enderecos: Array<Endereco>
   ) {
     this.nome = nome;
     this.sobrenome = sobrenome;
     this.idade = idade;
+    this.CPF = CPF;
     this.nacionalidade = nacionalidade;
-    this._enderecos = endereco;
+    this.enderecos = enderecos;
     Pessoa.qntPessoas++;
   }
 
   abstract gerarMatricula(): number;
 
-  // private recuperarEndereco(): string[] {
-  //   return this._endereco.map(({ cep, estado, nCasa, rua, bairro, cidade }) => {
-  //     return `Cep: ${cep}; Estado: ${estado}; Número da casa: ${nCasa};
-  //   Rua: ${rua}; Bairro: ${bairro}; Cidade: ${cidade};
-  //     `;
-  //   });
-  // }
-
-  static recuperarQntPessoas(): number {
-    return this.qntPessoas;
+  recuperarEndereco(posicao: number): Endereco {
+    return this.enderecos[posicao];
   }
 
-  //GETTER E SETTER ENDEREÇO
-  public set endereco(posicao: number) {
-    this._enderecos;
+  static recuperarQntPessoas(): number {
+    return Pessoa.qntPessoas;
   }
 
   // GETTER NOME COMPLETO
@@ -47,7 +41,7 @@ export abstract class Pessoa {
     return `Nome completo: ${this._nome} ${this._sobrenome}`;
   }
 
-  // GETTER E SETTER NOME E SOBRENOME
+  // SETTER NOME E SOBRENOME
   public set nome(nome: string) {
     this._nome = nome;
   }
@@ -63,6 +57,19 @@ export abstract class Pessoa {
     return this._idade;
   }
 
+  //GETTER E SETTER CPF
+  public set CPF(CPF: string) {
+    const padraoCPF: RegExp = /^\d{3}\.\d{3}\.\d{3}-\d{2}$/;
+    if (padraoCPF.test(CPF)) {
+      this._CPF = CPF;
+    } else {
+      throw new Error("CPF inválido!");
+    }
+  }
+  public get CPF() {
+    return this._CPF;
+  }
+
   // GETTER E SETTER NACIONALIDADE
   public set nacionalidade(nacionalidade: boolean) {
     this._nacionalidade = nacionalidade;
@@ -76,8 +83,11 @@ export abstract class Pessoa {
     }
   }
 
-  //GETTER ENDEREÇO
-  // public get endereco() {
-  //   // return this.recuperarEndereco();
-  // }
+  //GETTER E SETTER ENDEREÇOS
+  public set enderecos(value: Endereco[]) {
+    this._enderecos = value;
+  }
+  public get enderecos(): Endereco[] {
+    return this._enderecos;
+  }
 }

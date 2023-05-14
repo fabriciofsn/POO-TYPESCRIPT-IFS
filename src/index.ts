@@ -16,6 +16,7 @@ const Jubiscleiton: Aluno = new Aluno(
   "Jubiscleiton",
   "Silva",
   23,
+  "076.578.006-12",
   true,
   "informática",
   [enderecoAluno],
@@ -37,6 +38,7 @@ const professor: Professor = new Professor(
   "Sam",
   "Davis",
   25,
+  "055.456.789-88",
   true,
   [enderecoProfessor],
   25000

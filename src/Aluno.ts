@@ -10,12 +10,13 @@ export class Aluno extends Pessoa implements Projeto {
     nome: string,
     sobrenome: string,
     idade: number,
+    CPF: string,
     brasileiro: boolean,
     curso: string,
     endereco: Array<Endereco>,
     situacaoMatricula: SituacaoAluno
   ) {
-    super(nome, sobrenome, idade, brasileiro, endereco);
+    super(nome, sobrenome, idade, CPF, brasileiro, endereco);
     this._situacaoMatricula = situacaoMatricula;
     this.curso = curso;
     this.matricula = this.gerarMatricula();
@@ -57,9 +58,13 @@ export class Aluno extends Pessoa implements Projeto {
     return `
     ${this.nomeCompleto},
     idade: ${this.idade},
+    CPF: ${this.CPF}
     naturalidade: ${this.getNacionalidade()},
     curso: ${this.curso},
-    Endereço: ${this.endereco}
+    Endereço: ${this.enderecos.map((data) => {
+      return `Cep: ${data.cep}; Estado: ${data.nCasa}; Rua: ${data.rua}
+    Bairro: ${data.bairro}; Cidade: ${data.cidade}`;
+    })}
     Situação da matrícula: ${this.situacaoMatricula},
     Matrícula: ${this.matricula}
     `;
