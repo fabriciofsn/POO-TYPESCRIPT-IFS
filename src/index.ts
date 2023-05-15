@@ -1,6 +1,7 @@
 import { Aluno, SituacaoAluno } from "./Aluno";
 import { Professor } from "./Professor";
 import { Endereco } from "./Endereco";
+import { Disciplinas } from "./Disciplinas";
 
 console.log("Dados aluno");
 
@@ -12,6 +13,12 @@ const enderecoAluno: Endereco = new Endereco(
   "Centro",
   "Tobias Barreto"
 );
+const disciplinas = new Disciplinas(
+  "Programação",
+  "Banco de dados",
+  "Engenharia de software",
+  "Construção de sites"
+);
 const Jubiscleiton: Aluno = new Aluno(
   "Jubiscleiton",
   "Silva",
@@ -20,7 +27,8 @@ const Jubiscleiton: Aluno = new Aluno(
   true,
   "informática",
   [enderecoAluno],
-  SituacaoAluno.ATIVO
+  SituacaoAluno.ATIVO,
+  [disciplinas]
 );
 
 console.log(Jubiscleiton.recInfoAluno());

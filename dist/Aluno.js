@@ -3,13 +3,15 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.SituacaoAluno = exports.Aluno = void 0;
 const Pessoa_1 = require("./Pessoa");
 class Aluno extends Pessoa_1.Pessoa {
-    constructor(nome, sobrenome, idade, CPF, brasileiro, curso, endereco, situacaoMatricula) {
+    constructor(nome, sobrenome, idade, CPF, brasileiro, curso, endereco, situacaoMatricula, disciplinas) {
         super(nome, sobrenome, idade, CPF, brasileiro, endereco);
         this._situacaoMatricula = SituacaoAluno.ATIVO;
         this._curso = "";
+        this._disciplinas = [];
         this._situacaoMatricula = situacaoMatricula;
-        this.curso = curso;
+        this._curso = curso;
         this.matricula = this.gerarMatricula();
+        this._disciplinas = disciplinas;
     }
     gerarMatricula() {
         let ano = new Date().getFullYear();
@@ -36,6 +38,10 @@ class Aluno extends Pessoa_1.Pessoa {
     get situacaoMatricula() {
         return this._situacaoMatricula;
     }
+    //GETTER DE DISCIPLINAS;
+    get disciplicas() {
+        return this._disciplinas;
+    }
     recInfoAluno() {
         return `
     ${this.nomeCompleto},
@@ -48,7 +54,17 @@ class Aluno extends Pessoa_1.Pessoa {
     Bairro: ${data.bairro}; Cidade: ${data.cidade}`;
         })}
     Situação da matrícula: ${this.situacaoMatricula},
-    Matrícula: ${this.matricula}
+    Matrícula: ${this.matricula},
+    
+    Disciplinas do aluno:
+    ${this._disciplinas.map((data) => {
+            return `
+        ${data.disciplina1};
+        ${data.disciplina2};
+        ${data.disciplina3};
+        ${data.disciplina4};
+      `;
+        })}
     `;
     }
 }

@@ -1,10 +1,12 @@
 import { Endereco } from "./Endereco";
 import { Pessoa } from "./Pessoa";
+import { Disciplinas } from "./Disciplinas";
 
 export class Aluno extends Pessoa implements Projeto {
   private _situacaoMatricula: SituacaoAluno = SituacaoAluno.ATIVO;
   private _curso: string = "";
   private matricula: number;
+  private _disciplinas: Array<Disciplinas> = [];
 
   constructor(
     nome: string,
@@ -14,12 +16,14 @@ export class Aluno extends Pessoa implements Projeto {
     brasileiro: boolean,
     curso: string,
     endereco: Array<Endereco>,
-    situacaoMatricula: SituacaoAluno
+    situacaoMatricula: SituacaoAluno,
+    disciplinas: Array<Disciplinas>
   ) {
     super(nome, sobrenome, idade, CPF, brasileiro, endereco);
     this._situacaoMatricula = situacaoMatricula;
-    this.curso = curso;
+    this._curso = curso;
     this.matricula = this.gerarMatricula();
+    this._disciplinas = disciplinas;
   }
 
   gerarMatricula(): number {
@@ -54,6 +58,11 @@ export class Aluno extends Pessoa implements Projeto {
     return this._situacaoMatricula;
   }
 
+  //GETTER DE DISCIPLINAS;
+  public get disciplicas(): Array<Disciplinas> {
+    return this._disciplinas;
+  }
+
   recInfoAluno(): string {
     return `
     ${this.nomeCompleto},
@@ -66,7 +75,17 @@ export class Aluno extends Pessoa implements Projeto {
     Bairro: ${data.bairro}; Cidade: ${data.cidade}`;
     })}
     Situação da matrícula: ${this.situacaoMatricula},
-    Matrícula: ${this.matricula}
+    Matrícula: ${this.matricula},
+    
+    Disciplinas do aluno:
+    ${this._disciplinas.map((data) => {
+      return `
+        ${data.disciplina1};
+        ${data.disciplina2};
+        ${data.disciplina3};
+        ${data.disciplina4};
+      `;
+    })}
     `;
   }
 }
