@@ -13,12 +13,13 @@ const enderecoAluno: Endereco = new Endereco(
   "Centro",
   "Tobias Barreto"
 );
-const disciplinas = new Disciplinas(
+const disciplinas: Disciplinas = new Disciplinas([
   "Programação",
   "Banco de dados",
+  "Construção de sites",
   "Engenharia de software",
-  "Construção de sites"
-);
+]);
+
 const Jubiscleiton: Aluno = new Aluno(
   "Jubiscleiton",
   "Silva",

@@ -7,11 +7,11 @@ class Aluno extends Pessoa_1.Pessoa {
         super(nome, sobrenome, idade, CPF, brasileiro, endereco);
         this._situacaoMatricula = SituacaoAluno.ATIVO;
         this._curso = "";
-        this._disciplinas = [];
+        this._disciplinasAluno = [];
         this._situacaoMatricula = situacaoMatricula;
         this._curso = curso;
         this.matricula = this.gerarMatricula();
-        this._disciplinas = disciplinas;
+        this._disciplinasAluno = disciplinas;
     }
     gerarMatricula() {
         let ano = new Date().getFullYear();
@@ -39,8 +39,8 @@ class Aluno extends Pessoa_1.Pessoa {
         return this._situacaoMatricula;
     }
     //GETTER DE DISCIPLINAS;
-    get disciplicas() {
-        return this._disciplinas;
+    get disciplinas() {
+        return this._disciplinasAluno;
     }
     recInfoAluno() {
         return `
@@ -57,14 +57,9 @@ class Aluno extends Pessoa_1.Pessoa {
     Matrícula: ${this.matricula},
     
     Disciplinas do aluno:
-    ${this._disciplinas.map((data) => {
-            return `
-        ${data.disciplina1};
-        ${data.disciplina2};
-        ${data.disciplina3};
-        ${data.disciplina4};
-      `;
-        })}
+    ${this._disciplinasAluno.map((data) => data.disciplinas.map((data) => {
+            return `${data}`;
+        }))}
     `;
     }
 }

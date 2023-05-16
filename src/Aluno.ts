@@ -6,7 +6,7 @@ export class Aluno extends Pessoa implements Projeto {
   private _situacaoMatricula: SituacaoAluno = SituacaoAluno.ATIVO;
   private _curso: string = "";
   private matricula: number;
-  private _disciplinas: Array<Disciplinas> = [];
+  private _disciplinasAluno: Array<Disciplinas> = [];
 
   constructor(
     nome: string,
@@ -23,7 +23,7 @@ export class Aluno extends Pessoa implements Projeto {
     this._situacaoMatricula = situacaoMatricula;
     this._curso = curso;
     this.matricula = this.gerarMatricula();
-    this._disciplinas = disciplinas;
+    this._disciplinasAluno = disciplinas;
   }
 
   gerarMatricula(): number {
@@ -59,8 +59,8 @@ export class Aluno extends Pessoa implements Projeto {
   }
 
   //GETTER DE DISCIPLINAS;
-  public get disciplicas(): Array<Disciplinas> {
-    return this._disciplinas;
+  public get disciplinas(): Array<Disciplinas> {
+    return this._disciplinasAluno;
   }
 
   recInfoAluno(): string {
@@ -78,14 +78,11 @@ export class Aluno extends Pessoa implements Projeto {
     Matrícula: ${this.matricula},
     
     Disciplinas do aluno:
-    ${this._disciplinas.map((data) => {
-      return `
-        ${data.disciplina1};
-        ${data.disciplina2};
-        ${data.disciplina3};
-        ${data.disciplina4};
-      `;
-    })}
+    ${this._disciplinasAluno.map((data) =>
+      data.disciplinas.map((data) => {
+        return `${data}`;
+      })
+    )}
     `;
   }
 }

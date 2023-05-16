@@ -6,7 +6,12 @@ const Endereco_1 = require("./Endereco");
 const Disciplinas_1 = require("./Disciplinas");
 console.log("Dados aluno");
 const enderecoAluno = new Endereco_1.Endereco("49300-000", "Sergipe", "100", "Hesnan Do pão doce", "Centro", "Tobias Barreto");
-const disciplinas = new Disciplinas_1.Disciplinas("Programação", "Banco de dados", "Engenharia de software", "Construção de sites");
+const disciplinas = new Disciplinas_1.Disciplinas([
+    "Programação",
+    "Banco de dados",
+    "Construção de sites",
+    "Engenharia de software",
+]);
 const Jubiscleiton = new Aluno_1.Aluno("Jubiscleiton", "Silva", 23, "076.578.006-12", true, "informática", [enderecoAluno], Aluno_1.SituacaoAluno.ATIVO, [disciplinas]);
 console.log(Jubiscleiton.recInfoAluno());
 console.log("Dados Professor:");
