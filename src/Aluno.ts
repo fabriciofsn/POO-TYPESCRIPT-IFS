@@ -1,12 +1,14 @@
 import { Endereco } from "./Endereco";
 import { Pessoa } from "./Pessoa";
-import { Disciplinas } from "./Disciplinas";
+import { Disciplina } from "./Disciplinas";
+import { Nota } from "./Nota";
 
 export class Aluno extends Pessoa implements Projeto {
   private _situacaoMatricula: SituacaoAluno = SituacaoAluno.ATIVO;
   private _curso: string = "";
-  private matricula: number;
-  private _disciplinasAluno: Array<Disciplinas> = [];
+  private _matricula: number;
+  private _disciplinasAluno: Array<Disciplina> = [];
+  private _notas: Nota[] = [];
 
   constructor(
     nome: string,
@@ -17,13 +19,13 @@ export class Aluno extends Pessoa implements Projeto {
     curso: string,
     endereco: Array<Endereco>,
     situacaoMatricula: SituacaoAluno,
-    disciplinas: Array<Disciplinas>
+    disciplina: Array<Disciplina>
   ) {
     super(nome, sobrenome, idade, CPF, brasileiro, endereco);
-    this._situacaoMatricula = situacaoMatricula;
-    this._curso = curso;
-    this.matricula = this.gerarMatricula();
-    this._disciplinasAluno = disciplinas;
+    this.situacaoMatricula = situacaoMatricula;
+    this.curso = curso;
+    this._matricula = this.gerarMatricula();
+    this.disciplinas = disciplina;
   }
 
   gerarMatricula(): number {
@@ -32,6 +34,10 @@ export class Aluno extends Pessoa implements Projeto {
       Math.random() * (9999 - 1000 + 1) + 1000
     );
     return Number(`${ano}${matricula}`);
+  }
+
+  public get matricula() {
+    return this._matricula;
   }
 
   submeterProjetoPesquisa(): void {
@@ -59,13 +65,17 @@ export class Aluno extends Pessoa implements Projeto {
   }
 
   //GETTER DE DISCIPLINAS;
-  public get disciplinas(): Array<Disciplinas> {
+  public set disciplinas(disciplina: Array<Disciplina>) {
+    this._disciplinasAluno = disciplina;
+  }
+  public get disciplinas(): Array<Disciplina> {
     return this._disciplinasAluno;
   }
 
   recInfoAluno(): string {
     return `
     ${this.nomeCompleto},
+    
     idade: ${this.idade},
     CPF: ${this.CPF}
     naturalidade: ${this.getNacionalidade()},
@@ -77,12 +87,15 @@ export class Aluno extends Pessoa implements Projeto {
     Situação da matrícula: ${this.situacaoMatricula},
     Matrícula: ${this.matricula},
     
-    Disciplinas do aluno:
-    ${this._disciplinasAluno.map((data) =>
-      data.disciplinas.map((data) => {
-        return `${data}`;
-      })
-    )}
+    Disciplinas e carga horária de cada:
+    ${this._disciplinasAluno.map(({ disciplina, cargaHoraria }) => {
+      return `
+      Disciplina: ${disciplina}
+      Carga horária: ${cargaHoraria}
+     
+      `;
+    })}
+    
     `;
   }
 }

@@ -3,15 +3,17 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.SituacaoAluno = exports.Aluno = void 0;
 const Pessoa_1 = require("./Pessoa");
 class Aluno extends Pessoa_1.Pessoa {
-    constructor(nome, sobrenome, idade, CPF, brasileiro, curso, endereco, situacaoMatricula, disciplinas) {
+    constructor(nome, sobrenome, idade, CPF, brasileiro, curso, endereco, situacaoMatricula, disciplinas, notas) {
         super(nome, sobrenome, idade, CPF, brasileiro, endereco);
         this._situacaoMatricula = SituacaoAluno.ATIVO;
         this._curso = "";
         this._disciplinasAluno = [];
+        this._notasAluno = [];
         this._situacaoMatricula = situacaoMatricula;
         this._curso = curso;
         this.matricula = this.gerarMatricula();
         this._disciplinasAluno = disciplinas;
+        this._notasAluno = notas;
     }
     gerarMatricula() {
         let ano = new Date().getFullYear();
@@ -56,10 +58,8 @@ class Aluno extends Pessoa_1.Pessoa {
     Situação da matrícula: ${this.situacaoMatricula},
     Matrícula: ${this.matricula},
     
-    Disciplinas do aluno:
-    ${this._disciplinasAluno.map((data) => data.disciplinas.map((data) => {
-            return `${data}`;
-        }))}
+    Disciplinas, notas e média do aluno:
+    ${this._disciplinasAluno.map((data) => data.disciplinas.map((data) => data))}
     `;
     }
 }

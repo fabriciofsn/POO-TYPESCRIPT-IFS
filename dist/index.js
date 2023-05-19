@@ -12,7 +12,7 @@ const disciplinas = new Disciplinas_1.Disciplinas([
     "Construção de sites",
     "Engenharia de software",
 ]);
-const Jubiscleiton = new Aluno_1.Aluno("Jubiscleiton", "Silva", 23, "076.578.006-12", true, "informática", [enderecoAluno], Aluno_1.SituacaoAluno.ATIVO, [disciplinas]);
+const Jubiscleiton = new Aluno_1.Aluno("Jubiscleiton", "Silva", 23, "076.578.006-12", true, "informática", [enderecoAluno], Aluno_1.SituacaoAluno.ATIVO, [disciplinas], []);
 console.log(Jubiscleiton.recInfoAluno());
 console.log("Dados Professor:");
 const enderecoProfessor = new Endereco_1.Endereco("49000-001", "Sergipe", "200", "Louva-a-Deus do ping-pong", "Centro", "Aracaju");
