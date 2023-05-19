@@ -1,5 +1,5 @@
-import { Endereco } from "./Endereco";
-import { Pessoa } from "./Pessoa";
+import { Endereco } from "../Endereco/Endereco";
+import { Pessoa } from "../Pessoa/Pessoa";
 
 export class Professor extends Pessoa implements Projeto {
   private _salario: number = 0;

@@ -1,4 +1,4 @@
-import { Endereco } from "./Endereco";
+import { Endereco } from "../Endereco/Endereco";
 
 export abstract class Pessoa {
   private _nome: string = "";

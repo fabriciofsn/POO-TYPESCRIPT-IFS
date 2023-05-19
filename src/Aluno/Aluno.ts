@@ -1,15 +1,14 @@
-import { Endereco } from "./Endereco";
-import { Pessoa } from "./Pessoa";
-import { Disciplina } from "./Disciplinas";
-import { Nota } from "./Nota";
+import { Endereco } from "../Endereco/Endereco";
+import { Pessoa } from "../Pessoa/Pessoa";
+import { Disciplina } from "../Disciplina/Disciplinas";
+import { Nota } from "../Nota/Nota";
 
 export class Aluno extends Pessoa implements Projeto {
   private _situacaoMatricula: SituacaoAluno = SituacaoAluno.ATIVO;
   private _curso: string = "";
   private _matricula: number;
   private _disciplinasAluno: Array<Disciplina> = [];
-  private _notas: Nota[] = [];
-
+  private _notas: Array<Nota> = [];
   constructor(
     nome: string,
     sobrenome: string,
@@ -19,13 +18,15 @@ export class Aluno extends Pessoa implements Projeto {
     curso: string,
     endereco: Array<Endereco>,
     situacaoMatricula: SituacaoAluno,
-    disciplina: Array<Disciplina>
+    disciplina: Array<Disciplina>,
+    notas: Array<Nota>
   ) {
     super(nome, sobrenome, idade, CPF, brasileiro, endereco);
     this.situacaoMatricula = situacaoMatricula;
     this.curso = curso;
     this._matricula = this.gerarMatricula();
     this.disciplinas = disciplina;
+    this.notas = notas;
   }
 
   gerarMatricula(): number {
@@ -38,6 +39,42 @@ export class Aluno extends Pessoa implements Projeto {
 
   public get matricula() {
     return this._matricula;
+  }
+
+  //GETTER E SETTER NOTAS
+  public set notas(notas: Array<Nota>) {
+    this._notas = notas;
+  }
+  public get notas() {
+    return this._notas;
+  }
+
+  private _calcularMedia(): number {
+    let soma = 0;
+    for (let nota of this.notas) {
+      soma += nota.valor;
+    }
+    let media = soma / this.notas.length;
+    return media;
+  }
+
+  public get calcularMedia() {
+    return this._calcularMedia;
+  }
+
+  private _mediaPonderada() {
+    let soma = 0;
+    let ponderada = 0;
+    for (let nota of this.notas) {
+      soma += nota.valor * nota.peso;
+      ponderada += nota.peso;
+    }
+    let media = soma / ponderada;
+    return media.toFixed(2);
+  }
+
+  public get mediaPonderada() {
+    return this._mediaPonderada;
   }
 
   submeterProjetoPesquisa(): void {
@@ -92,7 +129,9 @@ export class Aluno extends Pessoa implements Projeto {
       return `
       Disciplina: ${disciplina}
       Carga horária: ${cargaHoraria}
-     
+      Notas: ${this.notas.map((nota) => nota.valor)}
+      Média Aritmética: ${this.calcularMedia()}
+      Média ponderada: ${this.mediaPonderada()}
       `;
     })}
     
