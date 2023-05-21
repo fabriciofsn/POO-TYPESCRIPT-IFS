@@ -2,7 +2,6 @@ import { Aluno, SituacaoAluno } from "./Aluno/Aluno";
 import { Professor } from "./Professor/Professor";
 import { Endereco } from "./Endereco/Endereco";
 import { Disciplina } from "./Disciplina/Disciplinas";
-import { Nota } from "./Nota/Nota";
 
 console.log("Dados aluno");
 
@@ -14,13 +13,6 @@ const enderecoAluno: Endereco = new Endereco(
   "Centro",
   "Tobias Barreto"
 );
-
-const nota1 = new Nota(8, 0.9);
-const nota2 = new Nota(9, 0.2);
-const nota3 = new Nota(7, 0.9);
-const nota4 = new Nota(8, 0.5);
-
-const notasFinal = [nota1, nota2, nota3, nota4];
 
 const disciplina: Disciplina = new Disciplina(
   "Programação, Banco de dados, Engenaria de software, Construção de sites",
@@ -37,7 +29,8 @@ const Jubiscleiton: Aluno = new Aluno(
   [enderecoAluno],
   SituacaoAluno.ATIVO,
   [disciplina],
-  notasFinal
+  [9, 8, 7, 9],
+  [0.6, 0.5, 0.9, 0.7]
 );
 
 console.log(Jubiscleiton.recInfoAluno());
